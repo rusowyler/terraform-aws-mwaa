@@ -173,12 +173,12 @@ variable "subnet_ids" {
 variable "ignore_changes_plugin" {
   type        = bool
   description = "Ignore changes on plugins configuration"
-  default     = true
+  default     = false
 }
 
 variable "ignore_changes_requirements" {
   type        = bool
   description = "Ignore changes on requirements configuration"
-  default     = true
+  default     = false
 }
 
