@@ -169,3 +169,16 @@ variable "subnet_ids" {
   type        = list(string)
   description = "The private subnet IDs in which the environment should be created. MWAA requires two subnets"
 }
+
+variable "ignore_changes_plugin" {
+  type        = bool
+  description = "Ignore changes on plugins configuration"
+  default     = true
+}
+
+variable "ignore_changes_requirements" {
+  type        = bool
+  description = "Ignore changes on requirements configuration"
+  default     = true
+}
+
