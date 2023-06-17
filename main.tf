@@ -12,6 +12,12 @@ locals {
   security_group_ids     = var.create_security_group ? concat(var.associated_security_group_ids, [module.mwaa_security_group.id]) : var.associated_security_group_ids
   s3_bucket_arn          = var.create_s3_bucket ? module.mwaa_s3_bucket.bucket_arn : var.source_bucket_arn
   execution_role_arn     = var.create_iam_role ? module.mwaa_iam_role.arn : var.execution_role_arn
+
+  mwaa_environment_output_source = (var.ignore_changes_plugin && var.ignore_changes_requirements ? 
+    aws_mwaa_environment.ignore_changes_plugin_and_requirements : var.ignore_changes_plugin ? 
+    aws_mwaa_environment.ignore_changes_plugin : var.ignore_changes_requirements ? 
+    aws_mwaa_environment.ignore_changes_requirements : aws_mwaa_environment.default
+  )
 }
 
 module "s3_label" {
